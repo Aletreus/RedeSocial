@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MatiExperience</title>
+    <style>
+        *{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            padding: 0;
+            margin: 0;
+            zoom: 97.5%;
+            position: relative;
+        }
+        html,body{
+            margin: 0;
+            padding: 0;
+            border: 0;
+            z-index: 0;
+        }
+        body{
+            background-color:#FDFBFB;
+        }
+        .storys{
+            width: 85px;
+            height: 85px;
+            border-radius: 999px;  
+            margin-left: 20px;
+            border-style: solid;
+            padding: 5px;
+            border-color: #E60997;
+            cursor: pointer;
+        }
+        .animacao:hover{
+            transform: scale(1.04);
+        }
+        .animacao{
+            transition: transform 0.3s ease-out;
+            cursor: pointer;
+        }
+        .animacao2:hover{
+            transform: scale(1.01);
+        }
+        .animacao2{
+            transition: transform 0.2s ease-out;
+            cursor: pointer;
+        }
+        #botaoAbrirConversa.girando {
+            transform: rotate(-180deg);
+            
+        }
+        #botaoAbrirConversa{
+            transition: transform 1.3s ease;
+            transform: rotate(0deg);
+        }
+        #botaoFecharConversa.girando{
+            transform: rotate(180deg);
+        }
+        #botaoFecharConversa{
+            transition: transform 1.3s ease;
+        }
+        #menuConversas {
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            opacity: 0;
+            transform: translateY(100%);    
+            z-index: 0;
+                
+        }
+
+        #menuConversas.aberto {
+            opacity: 1;
+            transform: translateY(0);   
+            z-index: 2;
+        }
+        #divMensagens::-webkit-scrollbar {
+            display: none;
+        }
+        #comentarios::-webkit-scrollbar {
+            display: none;
+        }
+        #titulo{
+            font-family: "Playwrite DE SAS", cursive;
+        }
+        .upload-container {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        display: inline-block;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+SAS&display=swap" rel="stylesheet">
+</head>
+
+<body>
+     <div style="width: 100%; height: 1030px; background-color: transparent; position: absolute; top: 0; margin: 0; padding: 0; z-index: 0; background-color: black; opacity: 0;" id="fundo" onclick="storySair(this)" ></div>
+
+    <div id="conteudo">
+        <main id="menu" style="position: fixed; width: 260px; height: 100%; box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.164); padding-left: 10px; ">
+            <h1 style="margin-left: 10px; margin-top: 20px; cursor: pointer;" ><a href="index.html" style="text-decoration: none; color: black;  " id="titulo">Gradual</a></h1>
+            <button style="background-color: transparent; border: 0px; font-size: 24px; position: absolute;" class="animacao2"><img src="ICONES/home.png" alt="" style="width: 30px; position: absolute; top: 207px; left: 20px;"><span style="position: absolute; top: 210px; width: 100px; left: 43px;"><a href="index.html" style="text-decoration: none; color: black;">Inicio</a></span></button>
+            <button style="background-color: transparent; border: 0px; font-size: 24px; position: absolute;" class="animacao2"><img src="ICONES/pesquisa.png" alt="" style="width: 30px; position: absolute; top: 270px; left: 20px;"><span style="position: absolute; top: 270px; width: 100px; left: 55px;">Explorar</span></button>
+            <button style="background-color: transparent; border: 0px; font-size: 24px; position: absolute;" class="animacao2"><img src="ICONES/comentario.png" alt="" style="width: 30px; position: absolute; top: 330px; left: 20px;"><span style="position: absolute; top: 330px; width: 100px; left: 65px;">Conversas</span></button>
+            <button style="background-color: transparent; border: 0px; font-size: 24px; position: absolute;" class="animacao2"><img src="ICONES/notificacao.png" alt="" style="width: 30px; position: absolute; top: 390px; left: 20px;"><span style="position: absolute; top: 390px; width: 100px; left: 63px;">Atividade</span></button>
+            <button style="background-color: transparent; border: 0px; font-size: 24px; position: absolute;" class="animacao2" onclick="botaoCriar();" id="botaoCriar"><img src="ICONES/adicionar.png" alt="" style="width: 30px; position: absolute; top: 450px; left: 20px;"><span style="position: absolute; top: 450px; width: 100px; left: 41px;">Criar</span></button>
+            <a href="meuPerfil.html" style="text-decoration: none; color: black;"><button style="background-color: transparent; border: 0px; font-size: 24px; position: absolute; cursor: pointer;"><div style="overflow: hidden; border-radius: 999px; width: 50px; height: 50px; margin-top: 530px; margin-left: 15px;"><img src="ICONES/matheusBonitao.enc" alt="" style="width: 50px;"></div><span style="position: absolute; top: 540px; width: 200px; left: 30px;">Meu Perfil</span></button></a>
+        </main>
+        <button style="position: fixed; left: 2020px; top: 950px; width: 70px; height: 70px; border: 0px; border-radius: 999px; cursor: pointer; background-color: transparent; z-index: 3;" class="animacao" onclick="menuConversas(this)" id="botaoAbrirConversa">
+            <div style="width: 60px; height: 60px; overflow: hidden; border-radius: 999px;">
+                <img src="ICONES/willian.jpg" alt="" width="72px">
+            </div>
+            <div style="position: fixed; top: 4px; width: 15px; height: 15px; background-color: rgb(250, 8, 8); border-radius: 999px; left: 42px;">
+
+            </div>
+        </button>
+        <button style="position: fixed; left: 2020px; top: 950px; width: 70px; height: 70px; border: 0px; border-radius: 999px; cursor: pointer; background-color: transparent; z-index: 1; opacity: 0;" class="animacao" onclick="menuConversasSair(this)" id="botaoFecharConversa">
+            <img src="ICONES/X.png" alt="" width="50px">
+        </button>
+        <main style=" width: 850px; margin: auto;">
+            <header id="storys" style="width: 900px; height: 145px; margin-bottom: 30px ; margin-bottom: 50px;">
+                <div style="width: 1500px; margin-top: 10px;">
+                    <img src="ICONES/matheusBonitao.enc" alt="" class="storys" onclick="storys(this)">
+                    <img src="ICONES/leo.jpg" alt="" class="storys" onclick="storys(this)">
+                    <img src="ICONES/gustavoTop.jpg" alt="" class="storys" onclick="storys(this)">
+                    <img src="ICONES/flavio.jpg" alt="" class="storys" onclick="storys(this)">
+                    <img src="ICONES/willian.jpg" alt="" class="storys" onclick="storys(this)">
+                    <img src="ICONES/arnold.jpg" alt="" class="storys" onclick="storys(this)" style="border-color: rgb(0, 192, 0);">
+                    <img src="ICONES/preto.jpg" alt="" class="storys" onclick="storys(this)">
+                </div>
+                <div>
+                    <span style="margin-left: 40px;">Seu Story</span>
+                    <span style="margin-left: 30px;">@leozin_monstro</span>
+                    <span style="margin-left: 18px;">@gustavochad</span>
+                    <span style="margin-left: 23px;">@flavioreidelas</span>
+                    <span style="margin-left: 20px;">@willianlendario</span>
+                    <span style="margin-left: 35px;">@.arnold</span>
+                    <span style="margin-left: 65px;">@kid_33</span>
+                </div>
+            </header>
+    
+    <main id="menuConversas" style="width: 500px; height: 450px; position: fixed; background-color: #FFFFFF; z-index: 3; left: 1550px; top: 520px; border-radius: 30px; box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.096); z-index: 0; opacity: 0; text-align: center;" >
+        <div style="background-color: #2896F3; height: 50px; border-radius: 30px 30px 0px 0px;padding: 5px; padding-left: 20px; display: flex;">
+            <div style="width: 50px; height: 50px; overflow: hidden; background-color: #cacaca; border-radius: 999px;">
+                <img src="ICONES/willian.jpg" alt="" width="52px">
+                <div style="position: fixed; top: 5px; width: 15px; height: 15px; background-color: rgb(28, 253, 20); border-radius: 999px; left: 55px;">
+
+            </div>
+            </div>
+            <h1 style="font-size: 22px; color: #FDFBFB; padding-left: 15px; padding-top: 5px;">willianlendario</h1>
+
+        </div>
+        <div style="display: flex; text-align: center; margin-top: 335px;">
+            <input type="text" name="" id="inputMenuMensagem" placeholder="Digite Algo..." style="width: 390px; border-radius: 20px; border-color: #2896F3; height: 40px; border-width: 3px; font-size: 16px; padding-left: 20px;  outline: none; border-style: solid; margin-left: 20px;">
+            <button style="width: 52px; height: 52px; background-color: #2896F3; border: 0; border-radius: 50%; cursor: pointer; margin-left: 10px;" id="enviarMensagem" onclick="enviarMensagem()">
+                <img src="ICONES/direct.png" alt="" style="width: 50px;">
+            </button>
+        </div>
+        <div style=" width: 460px; height: 310px; position: absolute; bottom: 75px; left: 25px; overflow-y: auto;" id="divMensagens">
+            <div style="background-color: gray; border-radius: 20px 20px 20px 0px; text-align: center; color: white; padding: 10px; width: 150px; font-weight: 900;">
+                <span>Salve Manow</span>
+                <img src="ICONES/visualizar.png" alt="" style="width: 20px; position: absolute; bottom: 5px; right: 10px;">
+            </div>
+
+        </div>
+    </main>
+    <main id="menuConversasParede" style="width: 500px; height: 450px; position: fixed; background-color: #f00505; z-index: 3; left: 1470px; top: 490px; border-radius: 10px; box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.096); z-index: 1; opacity: 0;">
+    </main>
+    <input type="text" id="inputPostagens" style="width: 200px; height: 30px; border-radius: 5px; position: fixed; top: 520px; left: 190px; outline: none; padding-left: 5px; border-style: solid; z-index: 0; opacity: 0;" placeholder="Coloque o URL da imagem aqui">
+    <button style="position: fixed; width: 35px; height: 35px; left: 400px; top: 519px; border-radius: 999px; cursor: pointer; background-color: transparent; border: 0; z-index: 0; opacity: 0;" onclick="adicionarPostagem()" id="botaoPostagens">
+        <img src="ICONES/adicionar.png" alt="" style="width: 35px;">
+    </button>
+
+   
+    <div id="storyExpandido" style="position: fixed; top: 100px; left: 780px; z-index: 0; opacity: 0;">
+        <div style="overflow: hidden; width: 600px; height: 740px; margin: auto; border-radius: 10px;">
+           <img src="ICONES/gustavo.png" alt="" style="width: 100%;">
+        </div>
+        <div style="position: fixed; top: 115px; width: 60px; height: 60px; overflow: hidden; border-radius: 999px; left: 810px;">
+            <img src="ICONES/matheusBonitao.enc" alt="" width="60px">
+        </div>
+        <span style="position: fixed; top: 120px; left: 875px; color: white; font-weight: 900;">@_matheus.049</span>
+        <input type="text" style="width: 500px; height: 35px; background-color: transparent; border-radius: 20px; position: fixed; top: 790px; left: 820px; border-style: solid; padding-left: 20px; outline: none; color: white;" placeholder="Enviar Mensagem">
+        <button style="background-color: transparent; border: 0; position: fixed; top: 790px; left: 1350px; cursor: pointer;">
+            <img src="ICONES/direct.png" alt="" width="40px">
+        </button>
+        <button style="position: fixed; width: 30px; height: 30px; top: 490px; left: 1420px; border: 0; background-color: rgb(87, 86, 86); border-radius: 999px; cursor: pointer; font-weight: 900; color: white; font-size: 22px;">
+            >
+        </button>
+    </div>
+
+</body>
+<script>
+    function botaoCriar(){
+        const botao = document.getElementById('botaoPostagens');
+        const input = document.getElementById('inputPostagens');
+        botao.style.zIndex = '2';
+        input.style.zIndex = '2';
+        botao.style.opacity = '1';
+        input.style.opacity = '1';
+    }
+
+    function adicionarPostagem() {
+        const fotoInput = document.getElementById('inputPostagens');
+        const conteudo = document.getElementById('conteudo');
+        const botao = document.getElementById('botaoPostagens');
+        const input = document.getElementById('inputPostagens');
+
+        botao.style.zIndex = '0';
+        input.style.zIndex = '0';
+        botao.style.opacity = '0';
+        input.style.opacity = '0';
+
+        const fotoSrc = fotoInput.value.trim();
+        if (!fotoSrc) {
+            return;
+        }
+        const post = document.createElement('section');
+        post.style.marginBottom = '40px';
+        post.style.paddingBottom = '30px';
+        post.style.margin = 'auto';
+        post.style.backgroundColor = 'transparent';
+        post.style.width = '600px'; 
+
+        const idComentario = 'inputComentario_' + Date.now();
+
+        post.innerHTML = `
+            <header id="perfil" style="width: 400px; height: 60px; display: flex;">
+                <div style="border-radius: 999px; height: 60px; width: 60px; margin-left: 10px; overflow: hidden; cursor: pointer; background-color: transparent;">
+                    <img src="ICONES/matheusBonitao.enc" alt="Perfil" style="width: 60px;">
+                </div>
+                <h2 style="margin-left: 10px; font-size: 22px;">@_matheus.049</h2>
+            </header>
+            <div id="feed" style="background-color: transparent; margin-top: 10px;">
+                <div style="height: 600px; width: 600px; background-color: transparent; margin: auto; overflow: hidden;">
+                    <img src="${fotoSrc}" alt="Imagem do post" style="border-radius: 5px; width: 600px;">
+                </div>
+            </div>
+            <div id="funcoes" style="margin-top: 10px;">
+                <img src="ICONES/like.webp" alt="Curtir" style="width: 40px; margin-left: 20px; margin-top: 10px;" class="animacao">
+                <img src="ICONES/comentario.png" alt="Comentar" style="width: 35px; margin-left: 10px; margin-top: 10px;" class="animacao">
+                <img src="ICONES/compartilhar.png" alt="Compartilhar" style="width: 35px; margin-left: 15px; margin-top: 10px;" class="animacao">
+                <img src="ICONES/salvar.png" alt="Salvar" style="width: 35px; margin-left: 375px;" class="animacao">
+            </div>
+            <div style="width: 600px; text-align: justify; margin: auto; margin-top: 20px;">
+                <h3>162 curtidas</h3><br>
+                <p><b>@_matheus.049</b> vai tomando.</p><br>
+                <div id="comentarios" style="width: 500px; padding: 5px; color: #3b3b3b; padding-left: 20px; overflow-y: auto; height: 30px;">
+                </div>
+                <input type="text" placeholder="Comente algo..." style="background-color: transparent; width: 400px; height: 35px; padding-left: 10px; border-top: 0; border-left: 0; border-right: 0; text-decoration: none; font-size: 18px; outline: none;" id="${idComentario}">
+            </div>
+        `;
+
+        conteudo.appendChild(post);
+
+        fotoInput.value = '';
+}
+
+    function storys(elemento){
+        const fundo = document.getElementById('fundo');
+        const div = document.getElementById('storyExpandido');
+        const story = document.getElementById('storys');
+        elemento.style.borderColor = 'gray'
+        div.style.opacity = '1';
+        div.style.zIndex = '3';
+        fundo.style.opacity = '1';
+        fundo.style.zIndex = '1';
+        story.style.opacity = '0';
+    }
+    function storySair(elemento){
+        const fundo = document.getElementById('fundo');
+        const div = document.getElementById('storyExpandido');
+        const story = document.getElementById('storys');
+        div.style.opacity = '0';
+        div.style.zIndex = '0';
+        fundo.style.opacity = '0';
+        fundo.style.zIndex = '0';
+        story.style.opacity = '1';
+    }
+    function menuConversas(elemento){
+        const menu = document.getElementById('menuConversas');
+        const parede = document.getElementById('menuConversasParede');
+        const botaoAbrir = document.getElementById('botaoAbrirConversa');
+        const botaoFechar = document.getElementById('botaoFecharConversa');
+        menu.style.zIndex = '2';
+        menu.style.opacity = '1';
+        parede.style.zIndex = '0';
+        botaoAbrir.style.zIndex = '1';
+        botaoAbrir.style.opacity = '0';
+        botaoFechar.style.opacity = '1';
+        botaoFechar.style.zIndex = '3';
+        menu.classList.add('aberto');  
+        botaoFechar.classList.remove('girando');
+        
+    }
+    function menuConversasSair(elemento){
+        const menu = document.getElementById('menuConversas');
+        const parede = document.getElementById('menuConversasParede');
+        const botaoAbrir = document.getElementById('botaoAbrirConversa');
+        const botaoFechar = document.getElementById('botaoFecharConversa');
+        menu.style.zIndex = '0';
+        menu.style.opacity = '0';
+        parede.style.zIndex = '1';
+        botaoAbrir.style.zIndex = '3';
+        botaoFechar.style.zIndex = '1';
+        botaoAbrir.style.opacity = '1';
+        botaoFechar.style.opacity = '0';
+        menu.classList.remove('aberto');
+        botaoFechar.classList.add('girando');
+    }
+    function enviarMensagem() {
+    const input = document.querySelector('#menuConversas input[type="text"]');
+    const texto = input.value.trim();
+
+    if (texto === "") return;
+
+    const containerMensagens = document.querySelector('#menuConversas > div:nth-of-type(3)');
+
+    const novaMensagem = document.createElement('div');
+    novaMensagem.style.backgroundColor = '#2896F3';
+    novaMensagem.style.borderRadius = '20px 20px 0px 20px';
+    novaMensagem.style.color = 'white';
+    novaMensagem.style.padding = '10px';
+    novaMensagem.style.width = 'fit-content';
+    novaMensagem.style.maxWidth = '70%';
+    novaMensagem.style.marginBottom = '10px';
+    novaMensagem.style.marginLeft = 'auto'; 
+    novaMensagem.style.marginRight = '0px';
+    novaMensagem.style.fontWeight = 'bold';
+    novaMensagem.innerText = texto;
+
+    containerMensagens.appendChild(novaMensagem);
+
+    input.value = "";
+    containerMensagens.scrollTop = containerMensagens.scrollHeight;
+}
+    function adicionarComentario(){
+        const input = document.getElementById('inputComentario1');
+        const divComentario = document.getElementById('comentarios');
+        const item = document.createElement('p');
+        item.textContent = `@voce  `  + input.value;
+        divComentario.appendChild(item);
+        input.value = '';
+    }
+
+    const inputMensagem = document.getElementById('inputMenuMensagem')
+
+    inputMensagem.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            enviarMensagem();
+            event.preventDefault();
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>meuPerfil</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            zoom: 97%;
+        }
+        .botao:hover{
+            filter: brightness(90%);
+            cursor: pointer;
+        }
+        .img{
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .img:hover{
+            filter: brightness(90%);
+            transform: scale(1.05);
+        }
+        #titulo{
+            font-family: "Playwrite DE SAS", cursive;
+        }
+        .animacao2:hover{
+            transform: scale(1.01);
+        }
+        .animacao2{
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+SAS&display=swap" rel="stylesheet">
+</head>
+<body>
+     <main id="menu" style="position: fixed; width: 260px; height: 100%; box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.164); padding-left: 10px; margin-top: 20px;">
+        <h1 style="margin-left: 10px; cursor: pointer;" ><a href="index.html" style="text-decoration: none; color: black; " id="titulo">Gradual</a></h1>
+        <button style="background-color: transparent; border: 0px; font-size: 24px; position: absolute;" class="animacao2"><img src="ICONES/home.png" alt="" style="width: 30px; position: absolute; top: 207px; left: 20px;"><span style="position: absolute; top: 210px; width: 100px; left: 43px;"><a href="index.html" style="text-decoration: none; color: black;">Inicio</a></span></button>
+        <button style="background-color: transparent; border: 0px; font-size: 24px; position: absolute;" class="animacao2"><img src="ICONES/pesquisa.png" alt="" style="width: 30px; position: absolute; top: 270px; left: 20px;"><span style="position: absolute; top: 270px; width: 100px; left: 55px;">Explorar</span></button>
+        <button style="background-color: transparent; border: 0px; font-size: 24px; position: absolute;" class="animacao2"><img src="ICONES/comentario.png" alt="" style="width: 30px; position: absolute; top: 330px; left: 20px;"><span style="position: absolute; top: 330px; width: 100px; left: 65px;">Conversas</span></button>
+        <button style="background-color: transparent; border: 0px; font-size: 24px; position: absolute;" class="animacao2"><img src="ICONES/notificacao.png" alt="" style="width: 30px; position: absolute; top: 390px; left: 20px;"><span style="position: absolute; top: 390px; width: 100px; left: 63px;">Atividade</span></button>
+        <a href="index.html"><button style="background-color: transparent; border: 0px; font-size: 24px; position: absolute;" class="animacao2"><img src="ICONES/adicionar.png" alt="" style="width: 30px; position: absolute; top: 450px; left: 20px;"><span style="position: absolute; top: 450px; width: 100px; left: 41px;">Criar</span></button></a>
+        <a href="meuPerfil.html" style="text-decoration: none; color: black;"><button style="background-color: transparent; border: 0px; font-size: 24px; position: absolute; cursor: pointer;"><div style="overflow: hidden; border-radius: 999px; width: 50px; height: 50px; margin-top: 530px; margin-left: 15px;"><img src="ICONES/matheusBonitao.enc" alt="" style="width: 50px;"></div><span style="position: absolute; top: 540px; width: 200px; left: 30px;">Meu Perfil</span></button></a>
+    </main>
+
+    <main style="padding-top: 50px;">
+        <div style=" width: 600px; height: 500px; margin: auto;">
+            <div style="overflow: hidden; width: 150px; height: 150px; border-radius: 999px; ">
+                <img src="ICONES/matheusBonitao.enc" alt="" style="width: 160px;">
+            </div>
+            <span style="font-size: 28px; position: absolute; top: 60px; left: 970px;">_matheus.049</span>
+            <button style="position: absolute; top: 60px; left: 1170px; width: 105px; height: 35px; font-size: 17px; background-color: rgb(104, 104, 104); border-radius: 10px; color: #FFFFFF; font-weight: 900; border: 0;" class="botao">Editar Perfil</button>
+            <img src="ICONES/engrenagem.png" alt="" style="width: 35px; position: absolute; top: 60px; left: 1300px; cursor: pointer;">
+            <span style="font-size: 22px; position: absolute; top: 120px; left: 980px;"><span style="font-size: 22px; font-weight: 900; margin-right: 5px;">0</span>publicações</span>
+            <span style="font-size: 22px; position: absolute; top: 120px; left: 1130px;"><span style="font-size: 22px; font-weight: 900; margin-right: 5px;">246</span>seguidores</span>
+            <span style="font-size: 22px; position: absolute; top: 120px; left: 1290px;"><span style="font-size: 22px; font-weight: 900; margin-right: 5px;">169</span>seguindo</span>
+        </div> 
+        <div style="background-color: gray; width: 800px; height: 1px; position: absolute; top: 470px; left: 690px;">
+        </div>
+        <div style=" position: absolute; top: 410px; left: 883px; width: 400px; height: 50px; text-align: center;">
+            <button class="botao" style="background-color: transparent; border: 0; width: 52px;  margin-right: 100px;"><img src="ICONES/home.png" alt="" style="width: 52px;" ></button>
+            <button class="botao" style="background-color: transparent; border: 0; margin-right: 100px; width: 50px;"><img src="ICONES/salvar.png" alt="" style="width: 50px; "></button>
+            <button class="botao" style="width: 50px; background-color: transparent; border: 0;"><img src="ICONES/perfilHomezinho.png" alt="" style="width: 50px;"></button>
+        </div>
+        <div style=" width: 1200px; height: 390px; margin: auto; display: flex; margin-bottom: 20px;">
+            <div style="width: 390px; height: 390px;  overflow: hidden; margin-left: 20px;">
+                <img src="ICONES/img1.jpg" alt="" class="img">
+            </div>
+            <div style="width: 390px; height: 390px; overflow: hidden; margin-left: 20px;">
+                <img src="ICONES/img2.jpg" alt="" class="img" style="width: 780px;">
+            </div>
+            <div style="width: 390px; height: 390px;  overflow: hidden; margin-left: 20px;">
+                <img src="ICONES/img3.jpg" alt="" class="img">
+            </div>
+        </div>
+        <div style=" width: 1200px; height: 390px; margin: auto; display: flex; margin-bottom: 20px;">
+            <div style="width: 390px; height: 390px;  overflow: hidden; margin-left: 20px;">
+                <img src="ICONES/img1.jpg" alt="" class="img">
+            </div>
+            <div style="width: 390px; height: 390px; overflow: hidden; margin-left: 20px;">
+                <img src="ICONES/img2.jpg" alt="" class="img" style="width: 780px;">
+            </div>
+            <div style="width: 390px; height: 390px;  overflow: hidden; margin-left: 20px;">
+                <img src="ICONES/img3.jpg" alt="" class="img">
+            </div>
+        </div>
+    </main>
+</body>
+</html>
